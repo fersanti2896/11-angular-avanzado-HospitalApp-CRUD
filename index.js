@@ -20,7 +20,8 @@ dbConnection();
 
 /* Rutas con middlewere: Ruta | Archivo Router */
 app.use( '/api/usuarios', require('./routes/usuariosRoutes') );
-app.use( '/api/hospitales', require('./routes/hospitalesRoutes') )
+app.use( '/api/hospitales', require('./routes/hospitalesRoutes') );
+app.use( '/api/medicos', require('./routes/medicosRoutes') );
 app.use( '/api/login', require('./routes/authRoutes') );
 
 app.listen( process.env.PORT, () => {
