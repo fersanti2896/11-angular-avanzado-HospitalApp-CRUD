@@ -14,7 +14,12 @@ const router = Router();
 router.get( '/', getPhysicians );
 
 /* POST: Ruta | Middlewere | Controlador */
-router.post( '/', [], postPhysician );
+router.post( '/', [
+    validarJWT,
+    check('nombre', 'El nombre del médico es obligatorio!').not().isEmpty(),
+    check('hospital', 'El hospital es obligatorio!').not().isEmpty(),
+    validarCampos
+], postPhysician );
 
 /* PUT: Ruta | Controlador */
 router.put( '/:id', [], putPhysician );
