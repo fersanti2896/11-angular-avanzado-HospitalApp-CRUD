@@ -14,7 +14,11 @@ const router = Router();
 router.get( '/', getHospitals );
 
 /* POST: Ruta | Middlewere | Controlador */
-router.post( '/', [], postHospital );
+router.post( '/', [ 
+    validarJWT,
+    check('nombre', 'El nombre del hospital es necesario!').not().isEmpty(),
+    validarCampos
+], postHospital );
 
 /* PUT: Ruta | Controlador */
 router.put( '/:id', [], putHospital );
